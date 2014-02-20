@@ -1,0 +1,34 @@
+{
+  "name": "pagediff",
+  "version": "0.1.0",
+  "description": "Node based cli tool using PhantomJS to take screenshots of a webpage and compare it to a previous version",
+  "main": "lib/pagediff",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TateMedia/pagediff.git"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "pagediff": "lib/pagediff.js"
+  },
+  "dependencies": {
+    "phantomjs": "~1.9.2-6"
+  },
+  "keywords": [
+    "canvas",
+    "phantomjs",
+    "cli"
+  ],
+  "author": "Toby Bettridge toby.bettridge@tate.org.uk https://github.com/tobyontour",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TateMedia/pagediff/issues"
+  },
+  "homepage": "https://github.com/TateMedia/pagediff"
+}

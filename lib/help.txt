@@ -1,0 +1,21 @@
+Simple usage:
+    pagediff before <url>
+      
+This will produce a png file with the name before-<url>-<width>x<height>.png
+          
+    pagediff after <url>
+
+This will produce a png file with the name after-<url>-<width>x<height>.png
+and a comparisson file with the name output-<url>-<width>x<height>.png
+                  
+The url will be sanitized to make it into a half-decent filename.
+
+Options:
+  --help                  This help text
+  --size=(height)x(width) Size of screen to use in pixels
+  --config=(filename)     Load config from file
+
+Further info:
+  https://github.com/TateMedia/pagediff
+
+

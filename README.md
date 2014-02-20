@@ -19,8 +19,8 @@ Installation
 
     npm install pagediff
 
-Usage
------
+Simple usage
+------------
 
     pagediff before <url>
 
@@ -33,6 +33,29 @@ and a comparisson file with the name output-(url)-(width)x(height).png
 
 The url will be sanitized to make it into a half-decent filename.
 
+Batch mode
+----------
+
+{
+  'batches' : [
+    {
+      'mode' : 'before',
+      'url' : 'http://...'
+    },
+    {
+      'mode' : 'before',
+      'url' : 'http://...'
+    },
+  ],
+}
+
+Config file
+-----------
+
+{
+  'size' : [ 1024, 768 ]
+}
+
 To do
 -----
 
@@ -44,4 +67,3 @@ To do
 3. It probably counts as a bug, but the image heights are fixed when the width
    is set. Need to adjust based on the rendered page height.
 
-4. Package and send to npm

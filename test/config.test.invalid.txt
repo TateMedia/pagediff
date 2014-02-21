@@ -1,0 +1,1 @@
+This file just contains junk that should break the configuration parsing in test.

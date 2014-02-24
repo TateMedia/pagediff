@@ -33,28 +33,50 @@ and a comparisson file with the name output-(url)-(width)x(height).png
 
 The url will be sanitized to make it into a half-decent filename.
 
+Options
+-------
+
+### Main options
+
+    pagediff before|after http://... (width)x(height) (output options)
+
+### Output options
+
+    --threshold=nn           Only output an output image if there are nn% pixels
+                             difference or more. In a batch this is:
+                              'threshold': 10,
+
+    --hide-before-and-after  Only show the composite image in the output file, not
+                             the before and after images. In a batch this is:
+                              'hide_before_and_after': true,
+
+
 Batch mode
 ----------
 
-{
-  'batches' : [
     {
-      'mode' : 'before',
-      'url' : 'http://...'
-    },
-    {
-      'mode' : 'before',
-      'url' : 'http://...'
-    },
-  ],
-}
-
-Config file
------------
-
-{
-  'size' : [ 1024, 768 ]
-}
+      'batches' : [
+        {
+          'mode' : 'before',
+          'url' : 'http://...'
+        },
+        {
+          'mode' : 'before',
+          'url' : 'https://...',
+        },
+        {
+          'mode' : 'before',
+          'url' : 'file://...',
+        },
+        {
+          'mode' : 'before',
+          'url' : 'http://...',
+          'size' : [640, 480],
+          'threshold' : 10,
+          'hide_before_and_after': true,
+        },
+      ],
+    }
 
 To do
 -----

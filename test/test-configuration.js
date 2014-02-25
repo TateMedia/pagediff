@@ -64,6 +64,13 @@ module.exports = {
     test.equal(data.mode, 'batch', 'Did not go into batch mode');
     test.equal(data.message, undefined);
     test.done();
+  },
+  'getProcessingOptions' : function (test) {
+    var result = configuration.getProcessingOptions({'hide_before_and_after': true, 'output_dir': "output/directory"});
+    test.notEqual(result.indexOf('--hide-before-and-after'), -1, 'getProcessingOptions not passing boolean values through');
+    test.equal(result.indexOf('--after-dir'), -1, 'getProcessingOptions passing through undefined values');
+    test.notEqual(result.indexOf('--output-dir=output/directory'), -1, 'getProcessingOptions not passing through string and numeric values');
+    test.done();
   }
 };
 

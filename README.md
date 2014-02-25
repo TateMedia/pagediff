@@ -22,11 +22,11 @@ Installation
 Simple usage
 ------------
 
-    pagediff before <url> <output-options>
+    pagediff <options> before <url> <output-options>
       
 This will produce a png file with the name before-<url>-<width>x<height>.png
           
-    pagediff after <url> <output-options>
+    pagediff <options> after <url> <output-options>
     
 This will produce a png file with the name after-<url>-<width>x<height>.png
 and a comparisson file with the name output-<url>-<width>x<height>.png

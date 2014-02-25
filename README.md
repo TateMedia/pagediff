@@ -22,37 +22,38 @@ Installation
 Simple usage
 ------------
 
-    pagediff before <url>
-
-This will produce a png file with the name before-(url)-(width)x(height).png
-
-    pagediff after <url>
-
-This will produce a png file with the name after-(url)-(width)x(height).png
-and a comparisson file with the name output-(url)-(width)x(height).png
-
+    pagediff before <url> <output-options>
+      
+This will produce a png file with the name before-<url>-<width>x<height>.png
+          
+    pagediff after <url> <output-options>
+    
+This will produce a png file with the name after-<url>-<width>x<height>.png
+and a comparisson file with the name output-<url>-<width>x<height>.png
+                  
 The url will be sanitized to make it into a half-decent filename.
 
-Options
--------
+###Options
 
-### Main options
+    --help                  This help text
+    --size=(height)x(width) Size of screen to use in pixels
+    --config=(filename)     Load config from file - see Batch mode below
 
-    pagediff before|after http://... (width)x(height) (output options)
+###Output options
 
-### Output options
+    --threshold=nn          Percentage of differing pixels needed before an output image is created. Default 0
+    --hide-before-and-after Hide the before and after images in the output. Just show composite
+    --before-dir=xxx        Directory to put the before image in.
+    --after-dir=xxx         Directory to put the after image in.
+    --output-dir=xxx        Directory to put the output image in.
 
-    --threshold=nn           Only output an output image if there are nn% pixels
-                             difference or more. In a batch this is:
-                              'threshold': 10,
-
-    --hide-before-and-after  Only show the composite image in the output file, not
-                             the before and after images. In a batch this is:
-                              'hide_before_and_after': true,
-
+Further info:
+  https://github.com/TateMedia/pagediff
 
 Batch mode
 ----------
+
+A file can be used to run the program over several URLs which may be of use in testing.
 
     {
       'batches' : [
@@ -81,11 +82,10 @@ Batch mode
 To do
 -----
 
-1. Allow a config script to be used to provide arguments so that the generation
-   of multiple pages can be automated.
-
-2. Allow the size to be set on the command line.
-
-3. It probably counts as a bug, but the image heights are fixed when the width
+1. It probably counts as a bug, but the image heights are fixed when the width
    is set. Need to adjust based on the rendered page height.
 
+2. Check that output options make it through from the batch file correctly.
+
+3. Check that directories and thresholds etc can be set at the top of the file as
+   defaults that the rest of the file can override.

@@ -1,10 +1,10 @@
 Simple usage:
-    pagediff before <url>
+    pagediff before <url> <output-options>
       
 This will produce a png file with the name before-<url>-<width>x<height>.png
           
-    pagediff after <url>
-
+    pagediff after <url> <output-options>
+    
 This will produce a png file with the name after-<url>-<width>x<height>.png
 and a comparisson file with the name output-<url>-<width>x<height>.png
                   
@@ -15,7 +15,13 @@ Options:
   --size=(height)x(width) Size of screen to use in pixels
   --config=(filename)     Load config from file
 
+Output options:
+
+  --threshold=nn          Percentage of differing pixels needed before an output image is created. Default 0
+  --hide-before-and-after Hide the before and after images in the output. Just show composite
+  --before-dir=xxx        Directory to put the before image in.
+  --after-dir=xxx         Directory to put the after image in.
+  --output-dir=xxx        Directory to put the output image in.
+
 Further info:
   https://github.com/TateMedia/pagediff
-
-

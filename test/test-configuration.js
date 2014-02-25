@@ -34,6 +34,15 @@ module.exports = {
     test.equal(data.mode, 'before', 'Did not go into before mode for file');
     test.done();
   },
+  'processArgsPassThrough' : function (test) {
+    // Check that the image processing options for phantomjs pass through
+    var data = configuration.processArgs(['asd', 'qwe', 'before', 'file://test.html', '--random-flag', '--another-random-flag']);
+
+    test.equal(data.mode, 'before');
+    test.notEqual(data.processing_options.indexOf('--another-random-flag'), -1, 'Flag not passed through to .processing_options');
+    test.notEqual(data.processing_options.indexOf('--random-flag'), -1, 'Flag not passed through to .processing_options');
+    test.done();
+  },
   'processArgsFileNonExistent' : function (test) {
     var data = configuration.processArgs(['node', 'script', '--config=non-existent.txt']);
     test.equal(data.mode, 'help', 'Did not go into help mode for a non-existent file');

@@ -1,7 +1,8 @@
 pagediff
 ========
 
-Creates an image containing the before, after, and difference of a web page rendering.
+Creates an image containing the before, after, and difference of a web page
+rendering.
 
 Overview
 --------
@@ -22,11 +23,11 @@ Installation
 Simple usage
 ------------
 
-    pagediff <options> before <url> <output-options>
+    pagediff before <url> <options>
       
 This will produce a png file with the name before-<url>-<width>x<height>.png
           
-    pagediff <options> after <url> <output-options>
+    pagediff after <url> <options>
     
 This will produce a png file with the name after-<url>-<width>x<height>.png
 and a comparisson file with the name output-<url>-<width>x<height>.png
@@ -41,11 +42,24 @@ The url will be sanitized to make it into a half-decent filename.
 
 ###Output options
 
-    --threshold=nn          Percentage of differing pixels needed before an output image is created. Default 0
-    --hide-before-and-after Hide the before and after images in the output. Just show composite
+    --threshold=nn          Percentage of differing pixels needed before an
+                            output image is created. Default 0
+    --hide-before-and-after Hide the before and after images in the output. Just
+                            show composite
     --before-dir=xxx        Directory to put the before image in.
     --after-dir=xxx         Directory to put the after image in.
     --output-dir=xxx        Directory to put the output image in.
+    --filter=xxx            Filter to use to highlight changes. Two options at
+                            the moment "differ_green_red" (default) and
+                            "differ_super_red"
+
+###Server options
+
+See server mode below.
+
+    --port=nnnn             Port number. Default 8000
+    --head=xxx              Filename of a file containing text to go in the
+                            <head> element 
 
 Further info:
   https://github.com/TateMedia/pagediff
@@ -53,7 +67,12 @@ Further info:
 Batch mode
 ----------
 
-A file can be used to run the program over several URLs which may be of use in testing.
+A file can be used to run the program over several URLs which may be of use in
+testing.
+
+    pagediff --config=xxx
+    
+Generally a batch file will look like this:
 
     {
       'batches' : [
@@ -79,13 +98,22 @@ A file can be used to run the program over several URLs which may be of use in t
       ],
     }
 
+Server mode
+-----------
+
+    pagediff server --port=8000 --head=head.html
+    
+In server mode a web server will run to allow you to see the contents of the
+output directory as a crude gallery (you can put some theming in the <head>
+tag if need be).
+
+Please please please, do not expose this to the open web, just use it
+internally. It hasn't been designed to be safe in any way, just to be
+convenient.
+
 To do
 -----
 
 1. It probably counts as a bug, but the image heights are fixed when the width
    is set. Need to adjust based on the rendered page height.
 
-2. Check that output options make it through from the batch file correctly.
-
-3. Check that directories and thresholds etc can be set at the top of the file as
-   defaults that the rest of the file can override.

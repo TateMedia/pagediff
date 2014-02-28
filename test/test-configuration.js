@@ -36,11 +36,13 @@ module.exports = {
   },
   'processArgsPassThrough' : function (test) {
     // Check that the image processing options for phantomjs pass through
-    var data = configuration.processArgs(['asd', 'qwe', 'before', 'file://test.html', '--random-flag', '--another-random-flag']);
+    var data = configuration.processArgs(['asd', 'qwe', 'before', 'file://test.html', '--random-flag', '--another-random-flag', '--random-value=womble']);
 
     test.equal(data.mode, 'before');
-    test.notEqual(data.processing_options.indexOf('--another-random-flag'), -1, 'Flag not passed through to .processing_options');
-    test.notEqual(data.processing_options.indexOf('--random-flag'), -1, 'Flag not passed through to .processing_options');
+    test.notEqual(data.raw_options.indexOf('--another-random-flag'), -1, 'Flag not passed through to .raw_options');
+    test.notEqual(data.raw_options.indexOf('--random-flag'), -1, 'Flag not passed through to .raw_options');
+    test.equal(data.options.random_flag, true, 'Flag not passed through to .options');
+    test.equal(data.options.random_value, 'womble', 'Value not passed through to .options');
     test.done();
   },
   'processArgsFileNonExistent' : function (test) {

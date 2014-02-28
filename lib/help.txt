@@ -1,27 +1,30 @@
 Simple usage:
-    pagediff before <url> <output-options>
+    pagediff before|after <url> <options>
       
-This will produce a png file with the name before-<url>-<width>x<height>.png
-          
-    pagediff after <url> <output-options>
-    
-This will produce a png file with the name after-<url>-<width>x<height>.png
-and a comparisson file with the name output-<url>-<width>x<height>.png
-                  
-The url will be sanitized to make it into a half-decent filename.
+Options
 
-Options:
-  --help                  This help text
-  --size=(height)x(width) Size of screen to use in pixels
-  --config=(filename)     Load config from file
+    --help                  This help text
+    --size=(height)x(width) Size of screen to use in pixels
+    --config=(filename)     Load config from file - see Batch mode belot be JSON
 
-Output options:
+Output options
 
-  --threshold=nn          Percentage of differing pixels needed before an output image is created. Default 0
-  --hide-before-and-after Hide the before and after images in the output. Just show composite
-  --before-dir=xxx        Directory to put the before image in.
-  --after-dir=xxx         Directory to put the after image in.
-  --output-dir=xxx        Directory to put the output image in.
+    --threshold=nn          Percentage of differing pixels needed before an
+                            output image is created. Default 0
+    --hide-before-and-after Hide the before and after images in the output. Just
+                            show composite
+    --before-dir=xxx        Directory to put the before image in.
+    --after-dir=xxx         Directory to put the after image in.
+    --output-dir=xxx        Directory to put the output image in.
+    --filter=xxx            Filter to use to highlight changes. Two options at
+                            the moment "differ_green_red" (default) and
+                            "differ_super_red"
+
+Server options
+
+    --port=nnnn             Port number. Default 8000
+    --head=xxx              Filename of a file containing text to go in the
+                            <head> element 
 
 Further info:
   https://github.com/TateMedia/pagediff

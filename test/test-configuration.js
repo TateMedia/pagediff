@@ -67,6 +67,15 @@ module.exports = {
     test.equal(data.message, undefined);
     test.done();
   },
+  'processArgsCompareMode' : function (test) {
+    var data = configuration.processArgs(['node', 'script', 'compare', 'http://site.one.com', 'http://site.two.com', '--flag', '--value=x']);
+    test.equal(data.mode, 'compare', 'Did not go into compare mode');
+    test.equal(data.url, 'http://site.one.com', 'Did not get first URL');
+    test.equal(data.url, 'http://site.two.com', 'Did not get second URL');
+    test.equal(data.options.flag, true, 'Did not get flag');
+    test.equal(data.options.value, 'x', 'Did not get value');
+    test.done();
+  },
   'getProcessingOptions' : function (test) {
     var result = configuration.getProcessingOptions({'hide_before_and_after': true, 'output_dir': "output/directory"});
     test.notEqual(result.indexOf('--hide-before-and-after'), -1, 'getProcessingOptions not passing boolean values through');
@@ -75,4 +84,3 @@ module.exports = {
     test.done();
   }
 };
-

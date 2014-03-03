@@ -1,6 +1,6 @@
 {
   "name": "pagediff",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Node based cli tool using PhantomJS to take screenshots of a webpage and compare it to a previous version",
   "main": "lib/pagediff",
   "scripts": {

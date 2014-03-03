@@ -68,10 +68,10 @@ module.exports = {
     test.done();
   },
   'processArgsCompareMode' : function (test) {
-    var data = configuration.processArgs(['node', 'script', 'compare', 'http://site.one.com', 'http://site.two.com', '--flag', '--value=x']);
+    var data = configuration.processArgs(['node', 'script', 'http://site.one.com', 'http://site.two.com', '--flag', '--value=x']);
     test.equal(data.mode, 'compare', 'Did not go into compare mode');
     test.equal(data.url, 'http://site.one.com', 'Did not get first URL');
-    test.equal(data.url, 'http://site.two.com', 'Did not get second URL');
+    test.notEqual(data.raw_options.indexOf('--url2=http://site.two.com'), -1, 'Did not get second URL');
     test.equal(data.options.flag, true, 'Did not get flag');
     test.equal(data.options.value, 'x', 'Did not get value');
     test.done();
